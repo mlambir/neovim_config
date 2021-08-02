@@ -6,6 +6,7 @@ wk.register({
       name = "+file",
       f = { "<cmd>Telescope find_files<cr>", "Find File" },
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+      b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
       n = { "<cmd>enew<cr>", "New File" },
     },
     h = {
@@ -27,8 +28,9 @@ wk.register({
   },
 })
 
-opts = {silent=true, noremap=true}
 local map = vim.api.nvim_set_keymap
+
+opts = {silent=true, noremap=true}
 
 vim.api.nvim_set_keymap('n', 'Y', 'y$', opts)
 vim.api.nvim_set_keymap('n', 'no', ':nohl<cr>', opts)
