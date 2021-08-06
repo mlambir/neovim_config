@@ -39,8 +39,19 @@ local map = vim.api.nvim_set_keymap
 
 opts = {silent=true, noremap=true}
 
-vim.api.nvim_set_keymap('n', 'Y', 'y$', opts)
-vim.api.nvim_set_keymap('n', 'L', '$', opts)
-vim.api.nvim_set_keymap('n', 'H', '^', opts)
-vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
-vim.api.nvim_set_keymap('n', '<leader>no', ':nohl<cr>', opts)
+map('n', 'Y', 'y$', opts)
+map('n', 'L', '$', opts)
+map('n', 'H', '^', opts)
+map('n', 'Q', '<nop>', opts)
+map('n', '<leader>no', ':nohl<cr>', opts)
+
+
+map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-j>', '<C-w>j', opts)
+
+map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
+map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
+map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
+map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
