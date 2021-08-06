@@ -31,7 +31,7 @@ wk.register({
     },
     ["/"] = { "<cmd>Telescope live_grep<cr>", "Live Grep",},
     ["*"] = { "<cmd>Telescope grep_string<cr>", "Grep String",},
-    w = { ":w<cr>", "Save",},
+    w = { ":update<cr>", "Save",},
   },
 })
 
@@ -40,4 +40,7 @@ local map = vim.api.nvim_set_keymap
 opts = {silent=true, noremap=true}
 
 vim.api.nvim_set_keymap('n', 'Y', 'y$', opts)
+vim.api.nvim_set_keymap('n', 'L', '$', opts)
+vim.api.nvim_set_keymap('n', 'H', '^', opts)
+vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
 vim.api.nvim_set_keymap('n', '<leader>no', ':nohl<cr>', opts)

@@ -15,6 +15,7 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
 opt.completeopt = "menuone,noselect"
+opt.scrolloff = 5
 
 -- disable nvim intro
 opt.shortmess:append("sI")
