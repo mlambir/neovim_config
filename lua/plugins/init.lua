@@ -5,6 +5,10 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup({function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-unimpaired'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
   use { 
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' 
   }
@@ -31,7 +35,7 @@ require('packer').startup({function()
   use {
     'b3nj5m1n/kommentary',
     config = function()
-      require('kommentary.config').use_extended_mappings()
+      -- require('kommentary.config').use_extended_mappings()
     end
   }
   use {
