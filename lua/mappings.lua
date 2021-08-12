@@ -2,12 +2,16 @@ local wk = require("which-key")
 
 wk.register({
   ["<leader>"] = {
+    t = {
+      name = "+terminal",
+      t = { ":FloatermToggle<CR>", "New"},
+    },
     f = {
       name = "+file",
       f = { "<cmd>Telescope find_files<cr>", "Find File" },
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-      b = { "<cmd>Telescope file_browser<cr>", "File Browser" },
-      n = { "<cmd>enew<cr>", "New File" },
+      b = { '<CMD>FloatermNew --autoclose=2 --height=0.6 --width=0.6 nnn -Hdeo<CR>', 'nnn'},
+      t = { '<CMD>FloatermNew --autoclose=2 broot<CR>', 'broot'},
     },
     h = {
       name = "+help",
@@ -15,7 +19,7 @@ wk.register({
     },
     g = {
       name = "+git",
-      g = { "<cmd>lua _gitui_toggle()<cr>", "gitui" },
+      g = { "<cmd>FloatermNew gitui<cr>", "gitui" },
       l = { "<cmd>Telescope git_commits<cr>", "Git Commits" },
       L = { "<cmd>Telescope git_bcommits<cr>", "Git Buffer Commits" },
       b = { "<cmd>Telescope git_branches<cr>", "Git Branches" },
@@ -45,7 +49,6 @@ map('n', 'H', '^', opts)
 map('n', 'Q', '<nop>', opts)
 map('n', '<leader>no', ':nohl<cr>', opts)
 
-
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-h>', '<C-w>h', opts)
@@ -55,3 +58,18 @@ map('t', '<C-l>', '<C-\\><C-n><C-w>l', opts)
 map('t', '<C-k>', '<C-\\><C-n><C-w>k', opts)
 map('t', '<C-h>', '<C-\\><C-n><C-w>h', opts)
 map('t', '<C-j>', '<C-\\><C-n><C-w>j', opts)
+map('t', '<C-t>', '<C-\\><C-n>:FloatermToggle<cr>', opts)
+map('t', '<C-a>', '<C-\\><C-n>:FloatermNew<cr>', opts)
+map('t', '<C-n>', '<C-\\><C-n>:FloatermNext<cr>', opts)
+map('t', '<C-p>', '<C-\\><C-n>:FloatermPrev<cr>', opts)
+
+map('n', "<C-Up>", ":resize -2<CR>", opts)
+map('n', "<C-Down>", ":resize +2<CR>", opts)
+map('n', "<C-Left>", ":vertical resize -2<CR>", opts)
+map('n', "<C-Right>", ":vertical resize +2<CR>", opts)
+
+map('n', "<S-l>", ":BufferNext<CR>", opts)
+map('n', "<S-h>", ":BufferPrevious<CR>", opts)
+map('n', "<A-j>", ":m .+1<CR>==", opts)
+map('n', "<A-k>", ":m .-2<CR>==", opts)
+
