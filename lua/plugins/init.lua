@@ -63,35 +63,26 @@ require('packer').startup({function()
   use "lukas-reineke/indent-blankline.nvim"
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzy-native.nvim'}},
+    config = function()
+      require 'plugins/telescope'
+    end
   }
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use "rafamadriz/friendly-snippets"
-
   use {
-    "akinsho/nvim-toggleterm.lua", 
-    config = function() 
-      require"plugins/term"
+    'voldikss/vim-floaterm',
+    config = function()
+      require "plugins/floaterm"
     end
   }
   use {
     'GustavoKatel/telescope-asynctasks.nvim',
-    requires = {{'skywind3000/asyncrun.vim'},{'skywind3000/asynctasks.vim'}, {'nvim-telescope/telescope.nvim'}},
+    requires = {{'skywind3000/asyncrun.vim'}, {'skywind3000/asyncrun.extra'}, {'skywind3000/asynctasks.vim'}, {'nvim-telescope/telescope.nvim'}},
     config = function()
       vim.g.asyncrun_open = 6
-      vim.api.nvim_exec([[
-      function! AsyncrunToggleTerm(opts) abort
-	let cmd = '2TermExec '
-	let cmd .= 'cmd="' . a:opts.cmd . '" '
-	let cwd = (a:opts.cwd == '')? getcwd() : (a:opts.cwd)
-	let cmd .= 'dir=' . fnameescape(cwd)
-        execute cmd
-      endfunction
-      let g:asyncrun_runner = get(g:, 'asyncrun_runner', {})
-      let g:asyncrun_runner.toggleterm = function('AsyncrunToggleTerm')
-      let g:asynctasks_term_pos = 'toggleterm'
-      ]], false)
+      vim.g.asynctasks_term_pos = 'floaterm'
     end
   }
   use {
